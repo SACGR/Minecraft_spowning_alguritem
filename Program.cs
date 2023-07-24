@@ -5,6 +5,7 @@
 
 using System.Data;
 using System.Runtime.CompilerServices;
+using System.Linq;
 //variable
 //kordionaterna som ett fiende spownas vid 
 int xVerde;
@@ -48,19 +49,7 @@ for (int Tik = 0; Tik < 100; Tik++)
     //prrintear ut vilket tick och mabcap
     Console.WriteLine("Tik = {2} cap {0}/{1}",levandeFiender.Count, mobCap,Tik);
     //tarbort alla fiender som inte borde leva 
-    for (int r = 0; r < levandeFiender.Count; r++)
-    {
-        //printar ut alla fiender och när dem skall dö
-        //Console.WriteLine("plats {0} dör {1}",r,levandeFiender[r]);
-        if (levandeFiender[r] <= Tik)
-        {
-            levandeFiender.RemoveAt(r);
-            Console.Write(r);
-            //fellsöknign- printar ut när fiender skall dö
-            //Console.WriteLine("-(R)En Fiende dog cap {0}/{1}",levandeFiender.Count, mobCap,Tik);
-        }
-
-    }
+    levandeFiender = levandeFiender.Where(x => x > Tik).ToList();
 
 
 
