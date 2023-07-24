@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Minecraft_spowning_alguritem/1.0.0": {
+        "runtime": {
+          "Minecraft_spowning_alguritem.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Minecraft_spowning_alguritem/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
