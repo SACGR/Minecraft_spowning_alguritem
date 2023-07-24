@@ -64,6 +64,7 @@ for (int Tik = 0; Tik < 100; Tik++)
 
 
 
+
     //prövar att spowna fiender ett par gånger 
     for (int i = 0; i < försök; i++)
     {
