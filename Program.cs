@@ -6,6 +6,8 @@
 using System.Data;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using MathNet.Numerics.Distributions;
+using MathNet.Numerics.Random;
 //variable
 //kordionaterna som ett fiende spownas vid 
 int xVerde;
@@ -82,6 +84,35 @@ static void FörsökSpowna(out int x, out int y, out int z, int[,] heaitManp, in
     x = rnd.Next(0, maxDim);
     z = rnd.Next(0, maxDim);
     y = rnd.Next(0, (heaitManp[x, z] + 1));
+}
+static void PackSpowning(list<int> levandeFiender,out list<int> levandeFiender,int oX,int oY,int oZ,int packSise, int[,,] blockPlatcering,int Tik,int hurLängeSakerLevenr, int mobCap)
+{
+
+    for(int i = 0; i < packSise; i++){
+    oX = linjerFördelnig(oX);
+    oZ = linjerFördelnig(oZ);
+
+    if (blockPlatcering[oX, oY, oZ] == 0 && blockPlatcering[oX, oY - 1, oZ] == 1)
+        {
+            levandeFiender.Add(Tik + hurLängeSakerLevenr);
+            //printar att en fiende har spownat och var
+            Console.WriteLine("{5}-(J) {0} {1} {2} pSF-{6} cap {3}/{4}", xVerde, yVerde, zVerde,levandeFiender.Count, mobCap,Tik,i);
+        }
+    }
+
+    
+
+
+}
+static int linjerFördelnig(){
+    Random rnd = new Random(startVärde);
+    if(rnd.Next(0,1)==1){
+        cordinaten = Gamma.Sample(1,5)*-1 +startVärde;
+    }
+    else
+        cordinaten = Gamma.Sample(1,5)+startVärde;
+    return(cordinaten);
+
 }
     
 
