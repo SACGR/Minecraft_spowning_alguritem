@@ -47,7 +47,7 @@ Console.WriteLine("Kartan är nu genereread");
 
 
 
-for (int Tik = 0; Tik < 100; Tik++)
+for (int Tik = 0; Tik < 300; Tik++)
 {
     //prrintear ut vilket tick och mabcap
     Console.WriteLine("Tik = {2} cap {0}/{1}",levandeFiender.Count, mobCap,Tik);
@@ -59,10 +59,11 @@ for (int Tik = 0; Tik < 100; Tik++)
     //prövar att spowna fiender ett par gånger 
     for (int i = 0; i < försök; i++)
     {
-
+        if(levandeFiender.Count <= mobCap)
+        {
         FörsökSpowna(out xVerde, out yVerde, out zVerde, heaitManp, maxDim);
         //försöker plasera en fiende på de slumpade kordinaten
-        if (blockPlatcering[xVerde, yVerde, zVerde] == 0 && blockPlatcering[xVerde, yVerde - 1, zVerde] == 1 && levandeFiender.Count <= mobCap)
+        if (blockPlatcering[xVerde, yVerde, zVerde] == 0 && blockPlatcering[xVerde, yVerde - 1, zVerde] == 1)
         {
             //deta är om du bara vill spowna en fiende
             //levandeFiender.Add(Tik + hurLängeSakerLevenr);
@@ -73,7 +74,7 @@ for (int Tik = 0; Tik < 100; Tik++)
 
             //försöker göra pack spownign
             PackSpowning(levandeFiender, out levandeFiender, xVerde, yVerde, zVerde,packSise,blockPlatcering,Tik,hurLängeSakerLevenr,mobCap);
-
+            Console.WriteLine("{5}-(O) {0} {1} {2} cap {3}/{4}", xVerde, yVerde, zVerde,levandeFiender.Count, mobCap,Tik);
 
         }
 
@@ -82,9 +83,16 @@ for (int Tik = 0; Tik < 100; Tik++)
             //printear att en finede försökte spowna 
             Console.WriteLine("{5}-(N) {0} {1} {2} cap {3}/{4}", xVerde, yVerde, zVerde,levandeFiender.Count, mobCap,Tik);
         }
+        }
+        else
+            Console.WriteLine("{2}-(N) Fullt Mob cap {0}/{1}",levandeFiender.Count, mobCap,Tik);
     }
 }
-Console.WriteLine("klar");
+Console.WriteLine("Färdig");
+
+
+
+
 
 //den här funktionen väljer ett x, y och z värde 
 static void FörsökSpowna(out int x, out int y, out int z, int[,] heaitManp, int maxDim)
@@ -106,10 +114,10 @@ static void PackSpowning(List<int> levandeFiender,out List<int> levandeFienderUt
         {
             levandeFienderUt.Add(Tik + hurLängeSakerLevenr);
             //printar att en fiende har spownat och var
-            Console.WriteLine("{5}-(J) {0} {1} {2} pSF-{6}/{7} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i,packSise);
+            Console.WriteLine("{5}-(J) {0} {1} {2} pSF {6}/{7} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i,packSise);
         }
     else
-        Console.WriteLine("{5}-(N) {0} {1} {2} pSF-{6}/{7} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i,packSise);
+        Console.WriteLine("{5}-(N) {0} {1} {2} pSF {6}/{7} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i,packSise);
     }
 
     
@@ -118,13 +126,7 @@ static void PackSpowning(List<int> levandeFiender,out List<int> levandeFienderUt
 }
 static int linjerFördelnig(int startVärde){
     Random rnd = new Random();
-    int cordinaten;
-    if(rnd.Next(0,1)==1){
-        cordinaten = (int)(Gamma.Sample(1,5)*-1 +startVärde);
-    }
-    else
-        cordinaten = (int)(Gamma.Sample(1,5)+startVärde);
-    return(cordinaten);
+    return((int)(Triangular.Sample(rnd,-5,5,0))+startVärde);
 
 }
     
