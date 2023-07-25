@@ -13,3 +13,5 @@
 /home/caspian/Desktop/Prugramering/C#/Minecraft_spowning_alguritem/obj/Debug/net7.0/Minecraft_spowning_alguritem.pdb
 /home/caspian/Desktop/Prugramering/C#/Minecraft_spowning_alguritem/obj/Debug/net7.0/Minecraft_spowning_alguritem.genruntimeconfig.cache
 /home/caspian/Desktop/Prugramering/C#/Minecraft_spowning_alguritem/obj/Debug/net7.0/ref/Minecraft_spowning_alguritem.dll
+/home/caspian/Desktop/Prugramering/C#/Minecraft_spowning_alguritem/bin/Debug/net7.0/MathNet.Numerics.dll
+/home/caspian/Desktop/Prugramering/C#/Minecraft_spowning_alguritem/obj/Debug/net7.0/Minecraft_spowning_alguritem.csproj.CopyComplete

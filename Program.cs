@@ -25,6 +25,7 @@ int[,] heaitManp = new int[maxDim, maxDim];
 int[,,] blockPlatcering = new int[maxDim, 384, maxDim];
 List<int> levandeFiender = new();
 int hurLängeSakerLevenr = 2;
+int packSise = 4;
 Console.WriteLine("den Startar");
 
 //dettta settar hella hitmapen till att barra vara 1
@@ -63,7 +64,12 @@ for (int Tik = 0; Tik < 100; Tik++)
         //försöker plasera en fiende på de slumpade kordinaten
         if (blockPlatcering[xVerde, yVerde, zVerde] == 0 && blockPlatcering[xVerde, yVerde - 1, zVerde] == 1 && levandeFiender.Count <= mobCap)
         {
-            levandeFiender.Add(Tik + hurLängeSakerLevenr);
+            //deta är om du bara vill spowna en fiende
+            //levandeFiender.Add(Tik + hurLängeSakerLevenr);
+
+            //försöker göra pack spownign
+            PackSpowning(levandeFiender, out levandeFiender, xVerde, yVerde, zVerde,packSise,blockPlatcering,Tik,hurLängeSakerLevenr,mobCap);
+
             //printar att en fiende har spownat och var
             Console.WriteLine("{5}-(J) {0} {1} {2} cap {3}/{4}", xVerde, yVerde, zVerde,levandeFiender.Count, mobCap,Tik);
         }
@@ -85,18 +91,19 @@ static void FörsökSpowna(out int x, out int y, out int z, int[,] heaitManp, in
     z = rnd.Next(0, maxDim);
     y = rnd.Next(0, (heaitManp[x, z] + 1));
 }
-static void PackSpowning(list<int> levandeFiender,out list<int> levandeFiender,int oX,int oY,int oZ,int packSise, int[,,] blockPlatcering,int Tik,int hurLängeSakerLevenr, int mobCap)
+static void PackSpowning(List<int> levandeFiender,out List<int> levandeFienderUt,int oX,int oY,int oZ,int packSise, int[,,] blockPlatcering,int Tik,int hurLängeSakerLevenr, int mobCap)
 {
+    levandeFienderUt = levandeFiender;
 
     for(int i = 0; i < packSise; i++){
     oX = linjerFördelnig(oX);
     oZ = linjerFördelnig(oZ);
 
-    if (blockPlatcering[oX, oY, oZ] == 0 && blockPlatcering[oX, oY - 1, oZ] == 1)
+    if (Enumerable.Range(0,blockPlatcering.GetLength(0)).Contains(oX) && Enumerable.Range(0,blockPlatcering.GetLength(2)).Contains(oZ) && blockPlatcering[oX, oY, oZ] == 0 && blockPlatcering[oX, oY - 1, oZ] == 1)
         {
-            levandeFiender.Add(Tik + hurLängeSakerLevenr);
+            levandeFienderUt.Add(Tik + hurLängeSakerLevenr);
             //printar att en fiende har spownat och var
-            Console.WriteLine("{5}-(J) {0} {1} {2} pSF-{6} cap {3}/{4}", xVerde, yVerde, zVerde,levandeFiender.Count, mobCap,Tik,i);
+            Console.WriteLine("{5}-(J) {0} {1} {2} pSF-{6} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i);
         }
     }
 
@@ -106,11 +113,12 @@ static void PackSpowning(list<int> levandeFiender,out list<int> levandeFiender,i
 }
 static int linjerFördelnig(int startVärde){
     Random rnd = new Random();
+    int cordinaten;
     if(rnd.Next(0,1)==1){
-        cordinaten = Gamma.Sample(1,5)*-1 +startVärde;
+        cordinaten = (int)(Gamma.Sample(1,5)*-1 +startVärde);
     }
     else
-        cordinaten = Gamma.Sample(1,5)+startVärde;
+        cordinaten = (int)(Gamma.Sample(1,5)+startVärde);
     return(cordinaten);
 
 }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7jyCNOORILFTrlX+i6nB+KPIu1roj4A2zVMvwNGSfHMJ/3vVUMKPmLxO0Hmf33Gb3a96sEhGZp9niZvDfdlkFQ==",
+  "dgSpecHash": "o+DAnTyxqI4hyW+TQ1Zt0AnCEk//f1WjnSxox03Y0y1wmoVQepukQ3hQ1kAh5wd1sVXiwjYfd52gQP51OmWKvQ==",
   "success": true,
   "projectFilePath": "/home/caspian/Desktop/Prugramering/C#/Minecraft_spowning_alguritem/Minecraft_spowning_alguritem.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/caspian/.nuget/packages/mathnet.numerics/5.0.0/mathnet.numerics.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
