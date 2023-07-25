@@ -104,8 +104,8 @@ static void PackSpowning(list<int> levandeFiender,out list<int> levandeFiender,i
 
 
 }
-static int linjerFördelnig(){
-    Random rnd = new Random(startVärde);
+static int linjerFördelnig(int startVärde){
+    Random rnd = new Random();
     if(rnd.Next(0,1)==1){
         cordinaten = Gamma.Sample(1,5)*-1 +startVärde;
     }
