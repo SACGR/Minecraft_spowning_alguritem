@@ -67,11 +67,14 @@ for (int Tik = 0; Tik < 100; Tik++)
             //deta är om du bara vill spowna en fiende
             //levandeFiender.Add(Tik + hurLängeSakerLevenr);
 
+            //printar att en fiende har spownat och var
+            //Console.WriteLine("{5}-(J) {0} {1} {2} cap {3}/{4}", xVerde, yVerde, zVerde,levandeFiender.Count, mobCap,Tik);
+
+
             //försöker göra pack spownign
             PackSpowning(levandeFiender, out levandeFiender, xVerde, yVerde, zVerde,packSise,blockPlatcering,Tik,hurLängeSakerLevenr,mobCap);
 
-            //printar att en fiende har spownat och var
-            Console.WriteLine("{5}-(J) {0} {1} {2} cap {3}/{4}", xVerde, yVerde, zVerde,levandeFiender.Count, mobCap,Tik);
+
         }
 
         else
@@ -103,8 +106,10 @@ static void PackSpowning(List<int> levandeFiender,out List<int> levandeFienderUt
         {
             levandeFienderUt.Add(Tik + hurLängeSakerLevenr);
             //printar att en fiende har spownat och var
-            Console.WriteLine("{5}-(J) {0} {1} {2} pSF-{6} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i);
+            Console.WriteLine("{5}-(J) {0} {1} {2} pSF-{6}/{7} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i,packSise);
         }
+    else
+        Console.WriteLine("{5}-(N) {0} {1} {2} pSF-{6}/{7} cap {3}/{4}", oX, oY, oZ,levandeFiender.Count, mobCap,Tik,i,packSise);
     }
 
     
